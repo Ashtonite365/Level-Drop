@@ -1,4 +1,4 @@
-// Grok Drop: import .gmd / raw level-string .txt files from a drop folder as NEW local levels.
+// Level Drop: import .gmd / raw level-string .txt files from a drop folder as NEW local levels.
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
@@ -14,7 +14,7 @@ namespace fs = std::filesystem;
 
 static fs::path dropDir() {
     auto p = Mod::get()->getSettingValue<fs::path>("drop-folder");
-    if (p.empty()) p = dirs::getSaveDir() / "grok-drop";
+    if (p.empty()) p = dirs::getSaveDir() / "level-drop";
     return p;
 }
 
@@ -31,7 +31,7 @@ static void moveInto(fs::path const& file, fs::path const& dir) {
     if (fs::exists(target, ec))
         target = dir / (file.stem().string() + "-" + stamp() + file.extension().string());
     fs::rename(file, target, ec);
-    if (ec) log::warn("Grok Drop: could not move {}: {}", file, ec.message());
+    if (ec) log::warn("Level Drop: could not move {}: {}", file, ec.message());
 }
 
 static std::string xmlEscape(std::string const& s) {
@@ -59,7 +59,7 @@ static Result<GJGameLevel*> importTxt(fs::path const& file) {
         if (data.find(';') == std::string::npos) return Err("not a level string");
         data = ZipUtils::compressString(data, false, 0);   // GD stores k4 gzip+base64
     }
-    auto tmp = file.parent_path() / (".grokdrop-" + stamp() + ".gmd");
+    auto tmp = file.parent_path() / (".leveldrop-" + stamp() + ".gmd");
     {
         std::ofstream out(tmp, std::ios::binary);
         out << "<?xml version=\"1.0\"?><plist version=\"1.0\" gjver=\"2.0\"><dict>"
@@ -83,7 +83,7 @@ static int scanDropFolder() {
     auto dir = dropDir();
     std::error_code ec;
     fs::create_directories(dir, ec);
-    if (ec) { log::warn("Grok Drop: cannot create {}: {}", dir, ec.message()); g_scanning = false; return 0; }
+    if (ec) { log::warn("Level Drop: cannot create {}: {}", dir, ec.message()); g_scanning = false; return 0; }
 
     std::vector<fs::path> files;
     for (auto const& e : fs::directory_iterator(dir, ec)) {
@@ -104,15 +104,15 @@ static int scanDropFolder() {
             moveInto(f, dir / "imported");
             count++;
             std::string name = level->m_levelName;
-            Notification::create(fmt::format("Grok Drop: imported {}", name), NotificationIcon::Success)->show();
-            log::info("Grok Drop: imported '{}' from {}", name, f);
+            Notification::create(fmt::format("Level Drop: imported {}", name), NotificationIcon::Success)->show();
+            log::info("Level Drop: imported '{}' from {}", name, f);
         } else {
             std::string err = res ? std::string("null level") : res.unwrapErr();
             moveInto(f, dir / "failed");
             std::ofstream log(dir / "failed" / (f.filename().string() + ".log"));
-            log << "Grok Drop import failed for " << f.filename().string() << ": " << err << "\n";
-            Notification::create(fmt::format("Grok Drop: failed {}", f.filename().string()), NotificationIcon::Error)->show();
-            log::warn("Grok Drop: failed {}: {}", f, err);
+            log << "Level Drop import failed for " << f.filename().string() << ": " << err << "\n";
+            Notification::create(fmt::format("Level Drop: failed {}", f.filename().string()), NotificationIcon::Error)->show();
+            log::warn("Level Drop: failed {}: {}", f, err);
         }
     }
     g_scanning = false;

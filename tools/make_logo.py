@@ -1,4 +1,4 @@
-"""Grok Drop logo (original, code-generated): folder + downward arrow + a GD-style level block. 336x336."""
+"""Level Drop logo (original, code-generated): folder + downward arrow + a GD-style level block. 336x336."""
 from PIL import Image, ImageDraw
 S=336; K=4; W=S*K
 im=Image.new("RGBA",(W,W),(0,0,0,0)); d=ImageDraw.Draw(im)

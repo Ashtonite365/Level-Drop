@@ -1,15 +1,15 @@
-# Grok Drop (ashtonite365.grok-drop)
+# Level Drop (ashtonite365.level-drop)
 
 Geode mod for **Geometry Dash 2.2081 (Windows)** with **Geode 5.11.x**. It auto-imports level files from a drop folder as new local levels. By Ashtonite365, GPL-3.0-only.
 
 ## Install
 1. Close Geometry Dash.
-2. Copy `ashtonite365.grok-drop.geode` into
+2. Copy `ashtonite365.level-drop.geode` into
    `C:\Program Files (x86)\Steam\steamapps\common\Geometry Dash\geode\mods\`.
 3. Install the **GMD API** mod (hjfod.gmd-api ≥1.5.0). This mod needs it.
    - Geode normally offers to install missing index dependencies when it loads a mod.
    - If it doesn't, install it from the in-game Geode mod browser (search "GMD API").
-4. Start GD. The folder `%LOCALAPPDATA%\GeometryDash\grok-drop\` is created on first start.
+4. Start GD. The folder `%LOCALAPPDATA%\GeometryDash\level-drop\` is created on first start.
 
 ## Use
 - Drop `.gmd` files (GDShare format) or `.txt` files with a raw level string (`kS38,...;1,1,2,...` or a gzip+base64 `H4sI...`) into the folder.
@@ -36,7 +36,7 @@ export GEODE_SDK=/opt/gd/sdk
 geode profile add --name box /path/to/any/dir win
 cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_TOOLCHAIN_FILE=cmake/win-xwin.cmake -DXWIN=/opt/gd/xwin
-cmake --build build      # -> build/ashtonite365.grok-drop.geode
+cmake --build build      # -> build/ashtonite365.level-drop.geode
 ```
 
 ### Windows
@@ -51,3 +51,5 @@ geode build
 ## Tools
 - `tools/make_logo.py` regenerates `logo.png` (original design, PIL).
 - `tools/parse_gmd.py FILE` parses a .gmd or .txt the same way the mod / GMD API does.
+
+Built with Grokest Bot.

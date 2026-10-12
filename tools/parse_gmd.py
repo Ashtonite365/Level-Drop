@@ -1,4 +1,4 @@
-"""Mirror of Grok Drop / GMD-API import parsing: handlePlistDataForParsing + DS_Dictionary root dict + k4 level string."""
+"""Mirror of Level Drop / GMD-API import parsing: handlePlistDataForParsing + DS_Dictionary root dict + k4 level string."""
 import sys, re, base64, gzip, xml.etree.ElementTree as ET
 def handle(value):
     value=value.replace("\0"," ")
