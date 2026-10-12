@@ -1,0 +1,27 @@
+{
+	"geode": "5.11.1",
+	"gd": {
+		"win": "2.2081"
+	},
+	"id": "ashtonite365.grok-drop",
+	"name": "Grok Drop",
+	"version": "v1.0.0",
+	"developer": "Ashtonite365",
+	"description": "Auto-import .gmd and level-string files from a drop folder",
+	"repository": "https://github.com/Ashtonite365/Grok-Drop",
+	"links": {
+		"source": "https://github.com/Ashtonite365/Grok-Drop"
+	},
+	"tags": ["utility", "editor"],
+	"dependencies": {
+		"hjfod.gmd-api": ">=1.5.0"
+	},
+	"settings": {
+		"drop-folder": {
+			"name": "Drop folder",
+			"description": "Folder watched for .gmd / .txt level files. Imported files move to imported/, failures to failed/ (with a .log).",
+			"type": "folder",
+			"default": "{gd_save_dir}/grok-drop"
+		}
+	}
+}

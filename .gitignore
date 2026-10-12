@@ -1,0 +1,10 @@
+build/
+build-*/
+_ref/
+*.geode
+*.dll
+*.pdb
+.cache/
+.vscode/
+.idea/
+__pycache__/
