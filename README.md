@@ -18,11 +18,11 @@ Geode mod for **Geometry Dash 2.2081 (Windows)** with **Geode 5.11.x**. It auto-
   - each time you open **Create** (CreatorLayer);
   - each time you open **My Levels**.
 - It skips scanning while the editor is open.
-- Each file becomes a **new** level at the top of My Levels. Existing levels are never touched.
+- Each file becomes a **new** level at the top of My Levels. With **Replace same-name levels** on (the default), existing local levels with the same name are deleted. A trailing ` vN` is stripped from names taken from a file name (`.txt`).
 - Successful imports move to `imported\`. Failures move to `failed\` along with `<file>.log`.
 - A small notification shows the level name.
-- The only setting is **Drop folder** (Geode mod settings).
-- **When levels are saved:** imports are saved through GD's normal save on exit, the same as GDShare. If the game crashes before exit, the import is lost, and the file is already in `imported\`. To retry, move it back out of `imported\`.
+- Settings: **Drop folder**, **Auto-save after import** and **Replace same-name levels** (Geode mod settings).
+- **When levels are saved:** with **Auto-save after import** on (default), the game saves right after each import. The **Save** button on My Levels (under the search button) saves on demand. Otherwise saving happens on exit, as in GD.
 
 ## Build
 

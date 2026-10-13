@@ -5,14 +5,17 @@
 	},
 	"id": "ashtonite365.level-drop",
 	"name": "Level Drop",
-	"version": "v1.0.0",
+	"version": "v1.2.0",
 	"developer": "Ashtonite365",
 	"description": "Auto-import .gmd and level-string files from a drop folder",
 	"repository": "https://github.com/Ashtonite365/Level-Drop",
 	"links": {
 		"source": "https://github.com/Ashtonite365/Level-Drop"
 	},
-	"tags": ["utility", "editor"],
+	"tags": [
+		"utility",
+		"editor"
+	],
 	"dependencies": {
 		"hjfod.gmd-api": ">=1.5.0"
 	},
@@ -22,6 +25,18 @@
 			"description": "Folder watched for .gmd / .txt level files. Imported files move to imported/, failures to failed/ (with a .log).",
 			"type": "folder",
 			"default": "{gd_save_dir}/level-drop"
+		},
+		"auto-save": {
+			"name": "Auto-save after import",
+			"description": "Save the game (CCLocalLevels.dat) right after levels are imported, so they survive a crash.",
+			"type": "bool",
+			"default": true
+		},
+		"replace-same-name": {
+			"name": "Replace same-name levels",
+			"description": "When an imported level has the same name as existing local levels, delete the old ones (My Levels) and keep the new import.",
+			"type": "bool",
+			"default": true
 		}
 	}
 }
